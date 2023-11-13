@@ -6,7 +6,6 @@ import Sidebar from "../components/Sidebar.vue";
 
 <template>
   <Header />
-
   <main class="flex">
     <!-- <Sidebar /> -->
 
