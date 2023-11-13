@@ -1,5 +1,5 @@
 <template>
-  <div class="h-16 bg-green-700 flex">
+  <div class="h-16 bg-white flex">
     <!-- <div
       class="w-16 h-16 h-full bg-green-500 grid place-items-center cursor-pointer mr-10"
     >
@@ -7,7 +7,7 @@
     </div> -->
     <div class="flex flex-col ml-5 justify-center">
       <!-- Sesuaikan nama desa masing-masing -->
-      <p class="text-lg leading-none uppercase text-white font-bold mb-2">
+      <p class="text-lg leading-none uppercase text-black font-bold mb-2">
         Indeks Pembangunan Pemuda
       </p>
     </div>
