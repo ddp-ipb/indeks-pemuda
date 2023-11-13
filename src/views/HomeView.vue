@@ -55,10 +55,6 @@ import axios from "axios";
 // Chart.register(...registerables);
 
 export default {
-  name: "App",
-  components: {
-    BarChart,
-  },
   data() {
     return {
       kode: null,
@@ -66,11 +62,6 @@ export default {
       loading: true,
       errored: false,
     };
-  },
-  filters: {
-    currencydecimal(value) {
-      return value.toFixed(2);
-    },
   },
   methods: {
     getIpp() {
