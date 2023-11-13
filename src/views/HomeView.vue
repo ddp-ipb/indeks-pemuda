@@ -17,7 +17,7 @@ import Header from "../components/Header.vue";
       <div v-if="loading">Loading...</div>
 
       <section v-else>
-        <h1>IPP : {{ dataipp.ipp }}</h1>
+        <h1>IPP : {{ dataipp.domain.ipp }}</h1>
 
         <p>Nama Provinsi : {{ dataipp.provinsi[0] }}</p>
         <p>
