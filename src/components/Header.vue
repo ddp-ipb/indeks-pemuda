@@ -8,14 +8,11 @@
     <div class="flex flex-col ml-5 justify-center">
       <!-- Sesuaikan nama desa masing-masing -->
       <p class="text-lg leading-none uppercase text-white font-bold mb-2">
-        Desa Contoh tugas Akhir Header
-      </p>
-      <p class="text-lg leading-none uppercase text-white font-bold">
-        Kabupaten Bogor
+        Indeks Pembangunan Pemuda
       </p>
     </div>
     <div class="flex items-center h-full ml-auto pr-20">
-      <a class="text-lg text-white mx-4 cursor-pointer">
+      <!-- <a class="text-lg text-white mx-4 cursor-pointer">
         <router-link to="/">Home</router-link>
       </a>
       <a class="text-lg text-white mx-4 cursor-pointer">
@@ -24,7 +21,7 @@
 
       <a class="text-lg text-white mx-4 cursor-pointer">
         <router-link to="/about">Tentang Desa</router-link>
-      </a>
+      </a> -->
 
       <!-- <div
         class="border-l border-zinc-700 h-[60%] flex items-center px-4 ml-10"

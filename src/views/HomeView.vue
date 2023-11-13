@@ -9,7 +9,7 @@ import Sidebar from "../components/Sidebar.vue";
   <Banner />
 
   <main class="flex">
-    <Sidebar />
+    <!-- <Sidebar /> -->
 
     <div class="flex-1 p-10">
       <p class="text-3xl font-semibold">Visi & Misi Desa Contoh TUgas Akhir</p>
