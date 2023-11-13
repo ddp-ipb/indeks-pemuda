@@ -10,8 +10,6 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: HomeView,
-      path: "/home/:kode",
-      component: User,
     },
   ],
 });
