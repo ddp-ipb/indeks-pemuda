@@ -19,13 +19,13 @@ import Header from "../components/Header.vue";
       <section v-else>
         <h1>IPP : {{ dataipp.domain.ipp }}</h1>
 
-        <p>Nama Provinsi : {{ dataipp.provinsi[0] }}</p>
+        <p>Provinsi : {{ dataipp.provinsi[0] }}</p>
         <p>
           Kabupaten/Kota :
           {{ dataipp.kabkot[0] }}
         </p>
-        <p>Nama Kecamatan : {{ dataipp.kecamatan[0] }}</p>
-        <p>Nama Desa/Kelurahan : {{ dataipp.nama_deskel[0] }}</p>
+        <p>Kecamatan : {{ dataipp.kecamatan[0] }}</p>
+        <p>Desa/Kelurahan : {{ dataipp.nama_deskel[0] }}</p>
       </section>
     </div>
 
