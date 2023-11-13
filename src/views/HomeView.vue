@@ -30,14 +30,15 @@ import Header from "../components/Header.vue";
     </div>
 
     <div class="flex-1 p-10">
+      <h1>DOMAIN:</h1>
       <div v-if="loading">Loading...</div>
-
       <section v-else>
         {{ dataipp.domain }}
       </section>
     </div>
 
     <div class="flex-1 p-10">
+      <h1>INDIKATOR:</h1>
       <div v-if="loading">Loading...</div>
 
       <section v-else>
