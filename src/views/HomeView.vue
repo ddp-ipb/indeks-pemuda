@@ -17,6 +17,8 @@ import Header from "../components/Header.vue";
       <div v-if="loading">Loading...</div>
 
       <section v-else>
+        <h1>IPP : {{ dataipp.ipp }}</h1>
+
         <p>Nama Provinsi : {{ dataipp.provinsi[0] }}</p>
         <p>
           Kabupaten/Kota :
@@ -47,44 +49,15 @@ import Header from "../components/Header.vue";
 
 <script>
 import axios from "axios";
-import { Chart, registerables } from "chart.js";
-import { BarChart, useBarChart } from "vue-chart-3";
+// import { Chart, registerables } from "chart.js";
+// import { BarChart, useBarChart } from "vue-chart-3";
 
-Chart.register(...registerables);
+// Chart.register(...registerables);
 
 export default {
   name: "App",
   components: {
     BarChart,
-  },
-  setup() {
-    const data = ref([30, 40, 60, 70, 5]);
-
-    computed(() => ({
-      labels: ["Paris", "Nîmes", "Toulon", "Perpignan", "Autre"],
-      datasets: [
-        {
-          data: data.value,
-          backgroundColor: [
-            "#77CEFF",
-            "#0079AF",
-            "#123E6B",
-            "#97B0C4",
-            "#A5C8ED",
-          ],
-        },
-      ],
-    }));
-
-    const { barChartProps, barChartRef } = useBarChart({
-      chartData,
-    });
-
-    function shuffleData() {
-      data.value = shuffle(data.value);
-    }
-
-    return { shuffleData, barChartProps, barChartRef };
   },
   data() {
     return {
