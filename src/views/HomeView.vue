@@ -67,7 +67,9 @@ export default {
   methods: {
     getIpp() {
       axios
-        .get("http://127.0.0.1:3000/api/v1/indeks_pemuda?kode=" + this.kode)
+        .get(
+          "https://core.desapresisi.id/api/v1/indeks_pemuda?kode=" + this.kode
+        )
         .then((response) => {
           // handle success
           this.dataipp = response.data;
