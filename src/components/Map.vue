@@ -1,5 +1,4 @@
 <script setup>
-import Header from "../components/Header.vue";
 import { latLngBounds, latLng } from "leaflet";
 import {
   LMap,
@@ -11,9 +10,8 @@ import {
 </script>
 
 <template>
-  <Header />
-  <div class="fixed">
-    <l-map :zoom="zoom" :center="center" style="height: 100vh; width: 100vw">
+  <div class="">
+    <l-map :zoom="zoom" :center="center" style="height: 500px; width: 100%">
       <l-control-layers position="topright"></l-control-layers>
       <l-tile-layer
         v-for="tileProvider in tileProviders"
@@ -25,7 +23,7 @@ import {
         layer-type="base"
       />
 
-      <l-geo-json
+      <!-- <l-geo-json
         v-for="(geojson, index) in layerData"
         :geojson="geojson"
         :key="index"
@@ -41,7 +39,7 @@ import {
         layer-type="overlay"
         :options-style="styleFunction"
       />
-      <l-marker :lat-lng="marker" />
+      <l-marker :lat-lng="marker" /> -->
     </l-map>
   </div>
 </template>
@@ -79,12 +77,12 @@ export default {
       show: true,
       enableTooltip: true,
       zoom: 15,
-      center: [-3.28561, 120.97431],
+      center: [-6.175148105110994, 106.82721183081121],
       layerData: [],
       geojson: null,
       fillColor: "#0CF9E0",
       tileProviders: tileProviders,
-      marker: latLng(-3.28561, 120.97431),
+      //   marker: latLng(-3.28561, 120.97431),
       timeout: undefined,
     };
   },
@@ -97,24 +95,7 @@ export default {
     }
   },
 
-  methods: {
-    async loadSomeGeoJson() {
-      const nextIndex = this.layerData.length;
-
-      const response = await fetch("/ds_nyule.geojson");
-      const data = await response.json();
-
-      console.log(data);
-
-      if (nextIndex >= data.features.length) {
-        return;
-      }
-
-      this.layerData.push(data.features[nextIndex]);
-
-      this.timeout = setTimeout(this.loadSomeGeoJson, 5000);
-    },
-  },
+  methods: {},
 
   computed: {
     options() {
@@ -150,12 +131,6 @@ export default {
       };
     },
   },
-  async created() {
-    this.loading = true;
-    const response = await fetch("/lu_ds_nyule.geojson");
-    const data = await response.json();
-    this.geojson = data;
-    this.loading = false;
-  },
+  async created() {},
 };
 </script>
