@@ -9,7 +9,7 @@ import BarChart from "../components/charts/BarChart.vue";
 <template>
   <Header
     v-bind:namadesa="`DESA ` + namadesa"
-    v-bind:kabkot="`kab. ` + kabkot"
+    v-bind:kabkot="`KAB. ` + kabkot"
   ></Header>
   <main>
     <div class="flex">
@@ -126,7 +126,7 @@ export default {
           // handle success
           this.dataipp = response.data;
           this.namadesa = response.data.nama_deskel[0].toUpperCase();
-          this.kabkot = response.data.kabkot[0];
+          this.kabkot = response.data.kabkot[0].toUpperCase;
           this.datamarkers = response.data.sebaran;
           this.datatables = response.data;
 

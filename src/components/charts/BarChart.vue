@@ -56,5 +56,8 @@ export default {
       },
     };
   },
+  mounted() {
+    this.labels;
+  },
 };
 </script>
