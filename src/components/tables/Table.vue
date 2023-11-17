@@ -4,8 +4,14 @@ import "@harv46/vue-table/dist/style.css";
 </script>
 
 <template>
-  <div>
-    <VueTable :headers="header" :data="datatables.indikator" :keys="keys" />
+  <div style="width: 100vw; 0; margin: 0 auto">
+    <!-- <div> -->
+    <VueTable
+      :headers="header"
+      :data="datatables.indikator"
+      :keys="keys"
+      :dark="false"
+    />
   </div>
 </template>
 

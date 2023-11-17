@@ -14,9 +14,9 @@ import BarChart from "../components/charts/BarChart.vue";
   <main>
     <div class="flex">
       <div class="flex-1 p-5">
-        <div class="max-w-xs rounded overflow-hidden bg-white shadow-lg">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
           <div class="px-6 py-5">
-            <div class="text-m mb-2">Indeks Pembangunan Pemuda</div>
+            <div class="text- mb-2">Indeks Pembangunan Pemuda</div>
             <div v-if="loading">Loading...</div>
             <section v-else>
               <h1 class="font-bold text-xl mb-2">
@@ -28,7 +28,7 @@ import BarChart from "../components/charts/BarChart.vue";
       </div>
 
       <div class="flex-1 p-5">
-        <div class="max-w-xs rounded overflow-hidden bg-white shadow-lg">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
           <div class="px-6 py-5">
             <div class="text-m mb-2">Jumlah Jiwa</div>
             <div v-if="loading">Loading...</div>
@@ -40,7 +40,7 @@ import BarChart from "../components/charts/BarChart.vue";
       </div>
 
       <div class="flex-1 p-5">
-        <div class="max-w-xs rounded overflow-hidden bg-white shadow-lg">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
           <div class="px-6 py-5">
             <div class="text-m mb-2">Jumlah Pemuda</div>
             <div v-if="loading">Loading...</div>
@@ -57,9 +57,9 @@ import BarChart from "../components/charts/BarChart.vue";
       <h2>Indikator</h2>
     </div>
 
-    <div class="flex mb-2">
-      <div class="flex-1 p-0">
-        <div class="max-w-auto rounded overflow-hidden">
+    <div class="mb-2">
+      <div class="flex-1 mr-5">
+        <div class="max-w-full overflow-hidden">
           <div class="px-6 py-2">
             <div class="font-normal text-xm">
               <Table v-bind:datatables="datatables"></Table>
@@ -74,73 +74,11 @@ import BarChart from "../components/charts/BarChart.vue";
       <h2>Domain</h2>
     </div>
 
-    <div class="flex">
+    <div class="flex mb-2">
       <div class="flex-1 p-5">
-        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
+        <div class="max-w-none rounded bg-white overflow-hidden">
           <div class="px-6 py-2">
-            <div class="text-xs mb-2">Pendidikan</div>
-            <div v-if="loading">Loading...</div>
-            <section v-else>
-              <h1 class="font-light text-xm mb-2">
-                {{ dataipp.domain[0].pendidikan }}
-              </h1>
-            </section>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex-1 p-5">
-        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
-          <div class="px-6 py-2">
-            <div class="text-xs mb-2">Kesehatan & Kesejahteraan</div>
-            <div v-if="loading">Loading...</div>
-            <section v-else>
-              <h1 class="font-light text-xm mb-2">
-                {{ dataipp.domain[0].kesehatan_kesejahteraan }}
-              </h1>
-            </section>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex-1 p-5">
-        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
-          <div class="px-6 py-2">
-            <div class="text-xs mb-2">Ketenagakerjaan & Kesempatan Kerja</div>
-            <div v-if="loading">Loading...</div>
-            <section v-else>
-              <h1 class="font-light text-xm mb-2">
-                {{ dataipp.domain[0].ketenagakerjaan_kesempatan_kerja }}
-              </h1>
-            </section>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex-1 p-5">
-        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
-          <div class="px-6 py-2">
-            <div class="text-xs mb-2">Partisipasi & Kepemimpinan</div>
-            <div v-if="loading">Loading...</div>
-            <section v-else>
-              <h1 class="font-light text-xm mb-2">
-                {{ dataipp.domain[0].partisipasi_kepemimpinan }}
-              </h1>
-            </section>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex-1 p-5">
-        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
-          <div class="px-6 py-2">
-            <div class="text-xs mb-2">Gender & Diskriminasi</div>
-            <div v-if="loading">Loading...</div>
-            <section v-else>
-              <h1 class="font-light text-xm mb-2">
-                {{ dataipp.domain[0].gender_diskriminasi }}
-              </h1>
-            </section>
+            <BarChart v-bind:dataChart="chartDataList"></BarChart>
           </div>
         </div>
       </div>
@@ -149,7 +87,8 @@ import BarChart from "../components/charts/BarChart.vue";
     <div
       class="max-w-none rounded overflow-hidden bg-white shadow-lg ml-5 mr-5"
     >
-      <div class="px-6 py-10">
+      <h2 class="p-2">Peta Sebaran</h2>
+      <div class="">
         <Map v-bind:datamarkers="markers"></Map>
         <!-- <Map v-bind:datamarkers="markers"></Map> -->
       </div>
@@ -163,7 +102,7 @@ import axios from "axios";
 
 export default {
   name: "Home",
-  components: { Map },
+  components: { Map, Table, BarChart },
   data() {
     return {
       kode: null,
@@ -193,29 +132,26 @@ export default {
 
           // this.chartDataList = response.data.domain;
 
-          // const labels = [];
-          // const data = []; // Calculate the total value
+          const labels = [];
+          const data = []; // Calculate the total value
 
-          // for (const key in response.data.domain) {
-          //   if (
-          //     Object.prototype.hasOwnProperty.call(response.data.domain, key)
-          //   ) {
-          //     const responsescampuran = key;
-          //     console.log(key);
-          //     labels.push(responsescampuran);
-          //     data.push(response.data.domain[key]);
-          //   }
-          // }
+          for (const key in response.data.domain[0]) {
+            {
+              const responsescampuran = key;
+              // console.log(key[0]);
+              labels.push(responsescampuran);
+              data.push(response.data.domain[0][key]);
+            }
+          }
 
-          // const optionsObject = {
-          //   // title: "Indeks Pembangunan Pemuda",
-          //   labels: labels,
-          //   data: data,
-          // };
+          const optionsObject = {
+            title: "Domain IPP",
+            labels: labels,
+            data: data,
+          };
 
-          // // console.log(optionsObject);
-
-          // this.chartDataList = optionsObject;
+          this.chartDataList = optionsObject;
+          console.log(optionsObject);
         })
         .catch(function (error) {
           // handle error

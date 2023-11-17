@@ -1,7 +1,7 @@
 <template>
   <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
 
-  {{ dataChart }}
+  <!-- {{ dataChart }} -->
 </template>
 
 <script>
@@ -25,13 +25,14 @@ ChartJS.register(
   LinearScale
 );
 
-const labels = [
-  "pendidikan",
-  "kesehatan_kesejahteraan",
-  "ketenagakerjaan_kesempatan_kerja",
-  "partisipasi_kepemimpinan",
-  "gender_diskriminasi",
-];
+// const labels = [
+//   "pendidikan",
+//   "kesehatan_kesejahteraan",
+//   "ketenagakerjaan_kesempatan_kerja",
+//   "partisipasi_kepemimpinan",
+//   "gender_diskriminasi",
+//   "ipp",
+// ];
 
 export default {
   name: "BarChart",
@@ -41,8 +42,14 @@ export default {
   data() {
     return {
       chartData: {
-        labels: this.labels,
-        datasets: [{ data: this.dataChart.data }],
+        labels: this.dataChart.labels,
+        datasets: [
+          {
+            label: this.dataChart.title,
+            backgroundColor: ["Orange"],
+            data: this.dataChart.data,
+          },
+        ],
       },
       chartOptions: {
         responsive: true,
