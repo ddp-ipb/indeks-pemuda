@@ -1,5 +1,7 @@
 <template>
   <Bar id="my-chart-id" :options="chartOptions" :data="chartData" />
+
+  {{ dataChart }}
 </template>
 
 <script>
@@ -23,25 +25,24 @@ ChartJS.register(
   LinearScale
 );
 
+const labels = [
+  "pendidikan",
+  "kesehatan_kesejahteraan",
+  "ketenagakerjaan_kesempatan_kerja",
+  "partisipasi_kepemimpinan",
+  "gender_diskriminasi",
+];
+
 export default {
   name: "BarChart",
   components: { Bar },
+  props: ["dataChart"],
+
   data() {
     return {
       chartData: {
-        labels: [
-          "Lama Studi",
-          "APK-Sekolah Menengah",
-          "APK-Perguruan Tinggi",
-          "Bebas Penyakit",
-          "Keikutsertakan Jamkes",
-          "Pemuda Kerah Putih",
-          "Pengangguran Terbuka",
-          "Partisipasi Organisasi",
-          "APK-SMA-Perempuan",
-          "Pemudi Pekerja",
-        ],
-        datasets: [{ data: [40, 20, 12, 23, 23, 23, 23, 24, 56, 78, 78, 79] }],
+        labels: this.labels,
+        datasets: [{ data: this.dataChart.data }],
       },
       chartOptions: {
         responsive: true,

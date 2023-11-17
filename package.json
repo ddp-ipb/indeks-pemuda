@@ -17,11 +17,11 @@
     "ol-ext": "^4.0.11",
     "vue": "^3.2.45",
     "vue-chartjs": "^5.2.0",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue-leaflet/vue-leaflet": "^0.10.1"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.0.0",
-    "@vue-leaflet/vue-leaflet": "^0.10.1",
     "leaflet": "^1.9.4",
     "tailwindcss": "^3.3.3",
     "vite": "^4.0.0"

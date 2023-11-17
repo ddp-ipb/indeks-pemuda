@@ -1,5 +1,4 @@
 <script setup>
-import { latLngBounds, latLng } from "leaflet";
 import {
   LMap,
   LControlLayers,
@@ -7,11 +6,18 @@ import {
   LMarker,
   LGeoJson,
 } from "@vue-leaflet/vue-leaflet";
+import { latLng, featureGroup } from "leaflet";
 </script>
 
 <template>
   <div class="">
-    <l-map :zoom="zoom" :center="center" style="height: 500px; width: 100%">
+    <l-map
+      :zoom="zoom"
+      :center="center"
+      :bounds="bounds"
+      :max-bounds="maxBounds"
+      style="height: 500px; width: 100%"
+    >
       <l-control-layers position="topright"></l-control-layers>
       <l-tile-layer
         v-for="tileProvider in tileProviders"
@@ -23,24 +29,27 @@ import {
         layer-type="base"
       />
 
-      <!-- <l-geo-json
-        v-for="(geojson, index) in layerData"
-        :geojson="geojson"
+      <l-marker
+        v-for="(marker, index) in datamarkers"
         :key="index"
-        layer-type="overlay"
-        :name="`Dusun ${index + 1}`"
-      />
+        :lat-lng="marker.markerLatlng"
+        :name="`Pemuda`"
+        :options="options"
+        :options-style="styleFunction"
+      >
+        <!-- <l-popup :content="`nama: ${marker.nama}`"> </l-popup> -->
+      </l-marker>
 
       <l-geo-json
-        :name="`Landuse`"
+        :name="`Batas Desa`"
         v-if="show"
         :geojson="geojson"
         :options="options"
         layer-type="overlay"
         :options-style="styleFunction"
       />
-      <l-marker :lat-lng="marker" /> -->
     </l-map>
+    <!-- {{ datamarkers }} -->
   </div>
 </template>
 
@@ -71,31 +80,44 @@ export default {
     LGeoJson,
     LMarker,
   },
+  props: ["datamarkers"],
   data() {
     return {
-      loading: false,
+      loading: true,
       show: true,
       enableTooltip: true,
-      zoom: 15,
-      center: [-6.175148105110994, 106.82721183081121],
-      layerData: [],
+      zoom: 4,
+      center: [-6.175648391650097, 106.82718498185969],
+      bounds: null,
+      maxBounds: null,
       geojson: null,
       fillColor: "#0CF9E0",
       tileProviders: tileProviders,
-      //   marker: latLng(-3.28561, 120.97431),
-      timeout: undefined,
     };
   },
-  mounted() {
-    this.timeout = setTimeout(this.loadSomeGeoJson, 1000);
-  },
-  beforeDestroy() {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-  },
+  methods: {
+    async getBatasDesa() {
+      this.loading = true;
+      const response = await fetch(
+        "https://maps.desapresisi.id/api/geodeskel?kode=" + this.kode
+      );
+      const data = await response.json();
+      this.geojson = data;
+      this.loading = false;
 
-  methods: {},
+      // this.$nextTick().then(() => {
+      //   var group = new featureGroup();
+
+      //   this.$refs.mapControl.mapObject.eachLayer(function (layer) {
+      //     if (layer.feature != undefined) group.addLayer(layer);
+      //   });
+
+      //   this.$refs.mapControl.mapObject.fitBounds(group.getBounds(), {
+      //     padding: [20, 20],
+      //   });
+      // });
+    },
+  },
 
   computed: {
     options() {
@@ -104,7 +126,7 @@ export default {
       };
     },
     styleFunction() {
-      const fillColor = this.fillColor; // important! need touch fillColor in computed for re-calculate when change fillColor
+      const fillColor = this.fillColor;
       return () => {
         return {
           weight: 2,
@@ -121,16 +143,20 @@ export default {
       }
       return (feature, layer) => {
         layer.bindTooltip(
-          "<div>Nama:" +
-            feature.properties.nama +
-            "</div><div>Luas: " +
-            feature.properties.luas +
-            " Ha</div>",
-          { permanent: false, sticky: true }
+          "<div>Dusun: " + feature.properties.dusun + "</div>",
+          {
+            permanent: false,
+            sticky: true,
+          }
         );
       };
     },
   },
-  async created() {},
+  mounted() {
+    const queryParameters = this.$route.query;
+    this.kode = queryParameters.kode;
+    this.getBatasDesa();
+    // this.getSebaran()
+  },
 };
 </script>

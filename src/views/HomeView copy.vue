@@ -1,5 +1,5 @@
-<script setup>
-import Header from "../components/Header.vue";
+<!-- <script setup>
+import Header from "../components/layout/Header.vue";
 </script>
 
 <template>
@@ -176,4 +176,4 @@ export default {
 body {
   background: #f1f1f1;
 }
-</style>
+</style> -->
