@@ -37,7 +37,7 @@ import { latLng, featureGroup } from "leaflet";
         :options="options"
         :options-style="styleFunction"
       >
-        <l-popup :content="`nama: ${marker.nama}`"> </l-popup>
+        <!-- <l-popup :content="`nama: ${marker.nama}`"> </l-popup> -->
       </l-marker>
 
       <l-geo-json
@@ -104,18 +104,6 @@ export default {
       const data = await response.json();
       this.geojson = data;
       this.loading = false;
-
-      // this.$nextTick().then(() => {
-      //   var group = new featureGroup();
-
-      //   this.$refs.mapControl.mapObject.eachLayer(function (layer) {
-      //     if (layer.feature != undefined) group.addLayer(layer);
-      //   });
-
-      //   this.$refs.mapControl.mapObject.fitBounds(group.getBounds(), {
-      //     padding: [20, 20],
-      //   });
-      // });
     },
   },
 
