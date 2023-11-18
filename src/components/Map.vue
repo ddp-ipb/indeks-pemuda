@@ -37,7 +37,6 @@ import { latLng, featureGroup } from "leaflet";
         :options="options"
         :options-style="styleFunction"
       >
-        <!-- <l-popup :content="`nama: ${marker.nama}`"> </l-popup> -->
       </l-marker>
 
       <l-geo-json

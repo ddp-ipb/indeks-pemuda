@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@harv46/vue-table": "^0.1.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
     "axios": "^1.6.1",
     "chart.js": "^4.4.0",
     "dotenv": "^16.3.1",
@@ -17,9 +19,7 @@
     "ol-ext": "^4.0.11",
     "vue": "^3.2.45",
     "vue-chartjs": "^5.2.0",
-    "vue-router": "^4.1.6",
-    "@vitejs/plugin-vue": "^4.0.0",
-    "@vue-leaflet/vue-leaflet": "^0.10.1"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "leaflet": "^1.9.4",

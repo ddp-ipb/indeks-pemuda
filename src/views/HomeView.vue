@@ -74,7 +74,79 @@ import BarChart from "../components/charts/BarChart.vue";
       <h2>Domain</h2>
     </div>
 
-    <div class="flex mb-2">
+    <div class="flex">
+      <div class="flex-1 p-5">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
+          <div class="px-6 py-2">
+            <div class="text-xs mb-2">Pendidikan</div>
+            <div v-if="loading">Loading...</div>
+            <section v-else>
+              <h1 class="font-light text-xm mb-2">
+                {{ dataipp.domain[0].pendidikan }}
+              </h1>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 p-5">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
+          <div class="px-6 py-2">
+            <div class="text-xs mb-2">Kesehatan & Kesejahteraan</div>
+            <div v-if="loading">Loading...</div>
+            <section v-else>
+              <h1 class="font-light text-xm mb-2">
+                {{ dataipp.domain[0].kesehatan_kesejahteraan }}
+              </h1>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 p-5">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
+          <div class="px-6 py-2">
+            <div class="text-xs mb-2">Ketenagakerjaan & Kesempatan Kerja</div>
+            <div v-if="loading">Loading...</div>
+            <section v-else>
+              <h1 class="font-light text-xm mb-2">
+                {{ dataipp.domain[0].ketenagakerjaan_kesempatan_kerja }}
+              </h1>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 p-5">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
+          <div class="px-6 py-2">
+            <div class="text-xs mb-2">Partisipasi & Kepemimpinan</div>
+            <div v-if="loading">Loading...</div>
+            <section v-else>
+              <h1 class="font-light text-xm mb-2">
+                {{ dataipp.domain[0].partisipasi_kepemimpinan }}
+              </h1>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex-1 p-5">
+        <div class="max-w-auto rounded overflow-hidden bg-white shadow-lg">
+          <div class="px-6 py-2">
+            <div class="text-xs mb-2">Gender & Diskriminasi</div>
+            <div v-if="loading">Loading...</div>
+            <section v-else>
+              <h1 class="font-light text-xm mb-2">
+                {{ dataipp.domain[0].gender_diskriminasi }}
+              </h1>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="flex mb-2">
       <div class="flex-1 p-5">
         <div class="max-w-none rounded bg-white overflow-hidden">
           <div class="px-6 py-2">
@@ -82,7 +154,7 @@ import BarChart from "../components/charts/BarChart.vue";
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div
       class="max-w-none rounded overflow-hidden bg-white shadow-lg ml-5 mr-5"
@@ -99,7 +171,6 @@ import BarChart from "../components/charts/BarChart.vue";
 
 <script>
 import axios from "axios";
-
 export default {
   name: "Home",
   components: { Map, Table, BarChart },

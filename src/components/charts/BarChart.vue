@@ -41,6 +41,8 @@ export default {
 
   data() {
     return {
+      loading: true,
+      refreshInterval: null,
       chartData: {
         labels: labels,
         datasets: [
@@ -56,8 +58,23 @@ export default {
       },
     };
   },
+  methods: {
+    startDataRefresh() {
+      // Set up a timer to periodically refresh chart data
+      this.refreshInterval = setInterval(() => {
+        this.loading = true;
+        // this.data();
+        this.dataChart;
+        this.loading = false; // Hide the progress bar when loading is complete
+      }, 1000); // Refresh data every 60 seconds (adjust as needed)
+    },
+    stopDataRefresh() {
+      // Clear the data refresh timer
+      clearInterval(this.refreshInterval);
+    },
+  },
   mounted() {
-    this.labels;
+    this.startDataRefresh();
   },
 };
 </script>
