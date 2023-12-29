@@ -33,13 +33,13 @@ const keys = [
   "lama_studi",
   "apk_sm",
   "apk_pt",
-  "apk_pt_pemudi",
   "bebas_penyakit",
   "keikutsertaan_jamkes",
   "pemuda_kerah_putih",
   "p_terbuka",
   "partisipasi_org",
   "partisipasi_orm",
+  "apk_pt_pemudi",
   "pemudi_pekerja",
 ];
 
